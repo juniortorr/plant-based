@@ -8,7 +8,7 @@ export default function Login() {
         <label htmlFor="username">Username:</label>
         <input type="text" name="username" id="password" />
         <label htmlFor="password">Password:</label>
-        <input type="text" name="passwprd" id="password" />
+        <input type="text" name="password" id="password" />
         <button>submit</button>
       </form>
     </>

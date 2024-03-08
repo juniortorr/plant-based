@@ -8,9 +8,13 @@ let isConnected: ConnectionStates;
 
 export default async function connectDB() {
   if (isConnected) return;
-
-  const db = await connect(uri);
-  isConnected = db.connections[0].readyState;
+  try {
+    const db = await connect(uri);
+    isConnected = db.connections[0].readyState;
+    console.log('connected');
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 export { uri };
