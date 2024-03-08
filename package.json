@@ -6,15 +6,28 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "vitest"
   },
   "dependencies": {
+    "auth": "^1.0.2",
+    "bcrypt": "^5.1.1",
+    "mongodb": "^6.4.0",
+    "mongoose": "^8.2.1",
+    "next": "14.1.1",
+    "next-auth": "^4.24.6",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.1.1"
+    "react-dom": "^18"
   },
   "devDependencies": {
+    "@testing-library/react": "^14.2.1",
+    "@types/node": "20.11.24",
+    "@types/react": "18.2.63",
+    "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8",
-    "eslint-config-next": "14.1.1"
+    "eslint-config-next": "14.1.1",
+    "js-md5": "^0.8.3",
+    "jsdom": "^24.0.0",
+    "vitest": "^1.3.1"
   }
 }
