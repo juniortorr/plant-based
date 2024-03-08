@@ -12,3 +12,5 @@ export default async function connectDB() {
   const db = await connect(uri);
   isConnected = db.connections[0].readyState;
 }
+
+export { uri };
