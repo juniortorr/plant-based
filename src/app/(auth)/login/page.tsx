@@ -1,4 +1,4 @@
-import { handleLogin } from '../actions';
+import { handleLogin } from '../../actions';
 
 export default function Login() {
   return (

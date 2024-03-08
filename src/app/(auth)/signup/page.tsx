@@ -1,4 +1,4 @@
-import { handleAddUser } from '../actions';
+import { handleAddUser } from '../../actions';
 
 export default function SignUp() {
   return (
