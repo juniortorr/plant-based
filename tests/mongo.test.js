@@ -24,6 +24,16 @@ describe('basic mongo actions', () => {
     const foundUser = await Users.findOne({ username: 'jim' });
     expect(foundUser.username).toBe('jim');
   });
+  it('blocks a user if theres already an account in that name', async () => {
+    let results = null;
+    const existingUser = await Users.findOne({ username: 'Hello there' });
+    if (existingUser) {
+      results = 'true';
+    } else {
+      results = 'false';
+    }
+    expect(results).toMatch('true');
+  });
 
   it('finds a user', async () => {
     const foundUser = await Users.findOne({ username: 'Hello there' });
