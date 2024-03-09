@@ -1,16 +1,20 @@
+'use client';
+import { useFormState } from 'react-dom';
 import { handleLogin } from '../../actions';
 
 export default function Login() {
+  const [state, formAction] = useFormState(handleLogin, null);
   return (
     <>
       <h1>Login Here</h1>
-      <form action={handleLogin}>
-        <label htmlFor="username">Username:</label>
-        <input type="text" name="username" id="password" />
+      <form action={formAction}>
+        <label htmlFor="email">Username:</label>
+        <input type="email" name="email" id="email" />
         <label htmlFor="password">Password:</label>
         <input type="text" name="password" id="password" />
         <button>submit</button>
       </form>
+      {state && <p>{state}</p>}
     </>
   );
 }

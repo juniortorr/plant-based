@@ -37,14 +37,16 @@ export async function handleAddUser(prevState: any, formData: FormData) {
   }
 }
 
-export async function handleLogin(formData) {
+export async function handleLogin(prevState, formData: FormData) {
   await connectDB();
-  const credentials = { username: formData.get('username'), password: formData.get('password') };
-  const existingUser = await Users.findOne({ username: credentials.username });
-  console.log(existingUser);
-  console.log(credentials.password);
-  const isAuthenticated = await bcrypt.compare(credentials.password, existingUser.password);
-  if (isAuthenticated) {
-    console.log('ayo');
+  const credentials = { email: formData.get('email'), password: formData.get('password') };
+  const existingUser = await Users.findOne({ email: credentials.email });
+  if (!existingUser) {
+    return 'No user found with this email';
   }
+  const isAuthenticated = await bcrypt.compare(credentials.password, existingUser.password);
+  if (!isAuthenticated) {
+    return 'Incorrect Password';
+  }
+  return 'Hey there partnah';
 }
