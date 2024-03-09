@@ -4,8 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { v4 as uuidv4 } from 'uuid';
 import connectDB from '../../config/db';
 import Users from './lib/models';
-import { notFound, redirect } from 'next/navigation';
-import { isNull } from 'util';
+import { redirect } from 'next/navigation';
 const bcrypt = require('bcrypt');
 const salt = 10;
 
