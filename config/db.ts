@@ -1,6 +1,5 @@
 // lib/dbConnect.tsx
-const uri =
-  'mongodb+srv://junetorresdev:BhyfFIGTbEuUVknm@cluster0.7hh194e.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const uri = process.env.MONGO;
 
 import { connect, ConnectionStates } from 'mongoose';
 

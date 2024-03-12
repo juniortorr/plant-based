@@ -5,8 +5,9 @@ import { v4 as uuidv4 } from 'uuid';
 const post = {
   id: uuidv4(),
   date: new Date(),
-  title: 'Why Is Health Important?',
+  title: 'Food?',
   body: 'Just trying out a bunch of random things out. This is a great start to it all',
+  private: true,
 };
 
 const seedDb = async () => {

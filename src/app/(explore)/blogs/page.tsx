@@ -6,9 +6,12 @@ export default async function Blogs() {
   const posts = await BlogPosts.find();
   return (
     <>
-      {posts.map((blog, index) => {
+      {posts.map((blog) => {
+        if (blog.private === true) {
+          return <h1 key={blog.id}>Private</h1>;
+        }
         return (
-          <div key={index}>
+          <div key={blog.id}>
             <p>{blog.title}</p>
             <p>{blog.body}</p>
           </div>
