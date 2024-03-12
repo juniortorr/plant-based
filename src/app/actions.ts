@@ -1,13 +1,13 @@
 'use server';
 
 import passwordValidation from './lib/validators';
-
 import { v4 as uuidv4 } from 'uuid';
 import connectDB from '../../config/db';
 import Users from './lib/models';
 import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
 import { SignJWT } from 'jose';
+import seedDb from './lib/seedBlogs';
 
 const bcrypt = require('bcrypt');
 const salt = 10;
@@ -38,6 +38,7 @@ export async function handleAddUser(prevState: any, formData: FormData) {
       const hashedPw = await bcrypt.hash(credentials.password, salt);
       credentials.password = hashedPw;
       await Users.create(credentials);
+      await seedDb();
       console.log('User successfully created!');
     } else {
       err.email = true;

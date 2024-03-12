@@ -9,7 +9,7 @@ export interface Person {
   savedBlogs: Array<any>;
 }
 
-const schema = new Schema<Person, Model<Person>>({
+const UserSchema = new Schema<Person, Model<Person>>({
   id: String,
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
@@ -18,4 +18,4 @@ const schema = new Schema<Person, Model<Person>>({
   savedBlogs: [],
 });
 
-export default models.Users || model('Users', schema);
+export default models.Users || model('Users', UserSchema);
