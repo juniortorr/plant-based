@@ -57,6 +57,14 @@ export async function handleLogin(prevState, formData: FormData) {
   const userInfo = { id: existingUser.id, email: existingUser.email };
   const jwt = await new SignJWT(userInfo).setProtectedHeader({ alg }).sign(secret);
   cookies().set({ name: 'auth', value: jwt, expires: Date.now() + oneDay, httpOnly: true });
+  redirect('/profile');
+}
 
-  return 'Hey there partnah';
+export async function handleLogout() {
+  const cookie = cookies().get('auth');
+  if (cookie) {
+    cookies().delete('auth');
+    console.log('logged out successfully');
+  }
+  redirect('/login');
 }

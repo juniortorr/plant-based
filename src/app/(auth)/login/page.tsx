@@ -1,7 +1,7 @@
 'use client';
 import { FormEventHandler, useState } from 'react';
 import { useFormState } from 'react-dom';
-import { handleLogin } from '../actions';
+import { handleLogin } from '../../actions';
 
 export default function Login() {
   const [state, setState] = useState({ email: '', password: '' });

@@ -14,5 +14,5 @@ export default async function check(req: NextRequest, res: NextResponse) {
 }
 
 export const config = {
-  matcher: '/profile',
+  matcher: ['/profile', '/programs'],
 };

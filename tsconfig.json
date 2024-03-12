@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/app/login/page.jsx",
+    "src/app/(auth)/login/page.jsx",
     "auth.config.js",
     "auth.config.js'"
   ],
