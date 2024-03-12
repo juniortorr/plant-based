@@ -1,10 +1,13 @@
 'use server';
+
 import passwordValidation from './lib/validators';
 import { revalidatePath } from 'next/cache';
 import { v4 as uuidv4 } from 'uuid';
 import connectDB from '../../config/db';
 import Users from './lib/models';
 import { redirect } from 'next/navigation';
+import { cookies } from 'next/headers';
+import { SignJWT } from 'jose';
 const bcrypt = require('bcrypt');
 const salt = 10;
 
@@ -48,5 +51,12 @@ export async function handleLogin(prevState, formData: FormData) {
   if (!isAuthenticated) {
     return 'Incorrect Password';
   }
+  const secret = new TextEncoder().encode(process.env.SECRET);
+  const oneDay = 24 * 60 * 60 * 1000;
+  const alg = 'HS256';
+  const userInfo = { id: existingUser.id, email: existingUser.email };
+  const jwt = await new SignJWT(userInfo).setProtectedHeader({ alg }).sign(secret);
+  cookies().set({ name: 'auth', value: jwt, expires: Date.now() + oneDay, httpOnly: true });
+
   return 'Hey there partnah';
 }

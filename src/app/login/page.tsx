@@ -1,23 +1,16 @@
 'use client';
 import { FormEventHandler, useState } from 'react';
 import { useFormState } from 'react-dom';
-import { signIn } from 'next-auth/react';
+import { handleLogin } from '../actions';
 
 export default function Login() {
   const [state, setState] = useState({ email: '', password: '' });
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    const res = await signIn('credentials', {
-      email: state.email,
-      password: state.password,
-      redirect: false,
-    });
-    console.log(res);
-  };
+  const [formState, formAction] = useFormState(handleLogin, null);
+
   return (
     <>
       <h1>Login Here</h1>
-      <form onSubmit={handleLogin}>
+      <form action={formAction}>
         <label htmlFor="email">Username:</label>
         <input
           type="email"
@@ -37,6 +30,7 @@ export default function Login() {
           }}
         />
         <button>submit</button>
+        {formState && <p>{formState}</p>}
       </form>
     </>
   );
