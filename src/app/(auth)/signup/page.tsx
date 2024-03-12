@@ -14,9 +14,21 @@ export default function SignUp() {
       <h1>Sign Up Here</h1>
       <form action={formAction}>
         <label htmlFor="firstName">First Name:</label>
-        <input type="firstName" name="firstName" id="firstName" />
+        <input
+          type="firstName"
+          name="firstName"
+          id="firstName"
+          pattern="^[A-Za-z]+$"
+          title="must only use letters"
+        />
         <label htmlFor="lastName">Last Name:</label>
-        <input type="lastName" name="lastName" id="lastName" />
+        <input
+          type="lastName"
+          name="lastName"
+          id="lastName"
+          pattern="^[A-Za-z]+$"
+          title="must only use letters"
+        />
         <label htmlFor="email">Email:</label>
         <input type="email" id="email" name="email" required />
         <label htmlFor="password">Password:</label>
