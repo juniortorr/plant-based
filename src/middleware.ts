@@ -24,11 +24,7 @@ export async function middleware(req: NextRequest) {
       return;
     } catch (e) {
       console.log('payload error', e);
-      // return NextResponse.redirect(new URL('/login', req.url));
+      return NextResponse.redirect(new URL('/login', req.url));
     }
   }
 }
-
-// export const config = {
-//   matcher: ['/profile', '/programs'],
-// };
