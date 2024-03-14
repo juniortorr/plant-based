@@ -1,5 +1,5 @@
 'use client';
-import { handleAddUser } from '../../actions';
+import { handleAddUser } from '../../(actions)/actions';
 import { useFormState } from 'react-dom';
 
 const initial = {
