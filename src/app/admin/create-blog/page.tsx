@@ -3,7 +3,6 @@
 import { handleCreateBlog } from 'src/app/(actions)/admin-actions';
 import { useFormState } from 'react-dom';
 import { useState } from 'react';
-import { clear } from 'console';
 
 export default function CreateBlog() {
   const [formState, formAction] = useFormState(handleCreateBlog, null);

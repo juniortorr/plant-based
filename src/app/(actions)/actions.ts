@@ -8,6 +8,7 @@ import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
 import { SignJWT } from 'jose';
 import seedDb from '../lib/seedBlogs';
+import { userSchema } from '../lib/validators';
 
 const bcrypt = require('bcrypt');
 const salt = 10;
@@ -19,6 +20,7 @@ export async function handleAddUser(prevState: any, formData: FormData) {
     const err = {
       email: null,
       password: null,
+      zod: null,
     };
     const credentials = {
       id: uuidv4(),
@@ -28,17 +30,21 @@ export async function handleAddUser(prevState: any, formData: FormData) {
       password: formData.get('password'),
       savedBlogs: [],
     };
+    const result: any = userSchema.safeParse(credentials);
+    if (!result.success) {
+      err.zod = result.error.errors[0].message;
+      return err;
+    }
     if (passwordValidation(credentials.password) === false) {
       err.password = true;
       return err;
     }
     const existingUser = await Users.findOne({ email: credentials.email });
     if (!existingUser) {
-      confirmUser = true;
       const hashedPw = await bcrypt.hash(credentials.password, salt);
       credentials.password = hashedPw;
       await Users.create(credentials);
-      await seedDb();
+      confirmUser = true;
       console.log('User successfully created!');
     } else {
       err.email = true;

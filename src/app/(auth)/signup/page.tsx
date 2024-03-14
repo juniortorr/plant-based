@@ -18,16 +18,16 @@ export default function SignUp() {
           type="firstName"
           name="firstName"
           id="firstName"
-          pattern="^[A-Za-z]+$"
-          title="must only use letters"
+          // pattern="^[A-Za-z]+$"
+          // title="must only use letters"
         />
         <label htmlFor="lastName">Last Name:</label>
         <input
           type="lastName"
           name="lastName"
           id="lastName"
-          pattern="^[A-Za-z]+$"
-          title="must only use letters"
+          // pattern="^[A-Za-z]+$"
+          // title="must only use letters"
         />
         <label htmlFor="email">Email:</label>
         <input type="email" id="email" name="email" required />
@@ -41,6 +41,7 @@ export default function SignUp() {
           </p>
         )}
         {state.email && <p>A user with this account already exists!</p>}
+        {state.zod}
       </form>
     </>
   );

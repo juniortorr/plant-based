@@ -5,6 +5,7 @@ import BlogPosts from '../lib/blogModel';
 import { notFound } from 'next/navigation';
 import connectDB from 'config/db';
 import { v4 as uuidv4 } from 'uuid';
+import { blogSchema } from '../lib/validators';
 
 export async function handleDeleteBlog(id: string) {
   try {
@@ -28,11 +29,17 @@ export async function handleCreateBlog(prevState: any, formData: FormData) {
   };
   console.log(data);
   try {
-    await connectDB();
-    await BlogPosts.create(data);
-    revalidatePath('/blogs');
-    revalidatePath('/admin/blogs');
-    return 'success!';
+    const result: any = blogSchema.safeParse(data);
+    if (!result.success) {
+      console.log(result.error.errors[0].message, 'hello');
+      return result.error.errors[0].message;
+    } else {
+      await connectDB();
+      await BlogPosts.create(data);
+      revalidatePath('/blogs');
+      revalidatePath('/admin/blogs');
+      return 'success!';
+    }
   } catch (e) {
     console.log(e);
     return e;
