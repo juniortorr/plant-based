@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import { jwtVerify } from 'jose';
 import { redirect } from 'next/navigation';
-import { handleLogout } from 'src/app/actions';
+import { handleLogout } from 'src/app/(actions)/actions';
 
 export default async function Profile() {
   const secret = new TextEncoder().encode(process.env.SECRET);
