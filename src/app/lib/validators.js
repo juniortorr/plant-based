@@ -23,6 +23,7 @@ export const userSchema = z.object({
     .min(1, { message: 'must be more than 1' }),
   password: z.string().trim().min(8, { message: 'must be at least 8 characters long' }),
   savedBlogs: z.array(),
+  admin: z.boolean(),
 });
 
 const passwordValidation = (pw) => regex.test(pw);
