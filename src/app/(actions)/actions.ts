@@ -9,7 +9,8 @@ import { cookies } from 'next/headers';
 import { SignJWT } from 'jose';
 import seedDb from '../lib/seedBlogs';
 import { userSchema } from '../lib/validators';
-import { getCredentials, initializeErrors } from '../lib/credentials-helpers';
+import { getCredentials, initializeErrors, getUserInfo } from '../lib/credentials-helpers';
+import { authenticate } from '../lib/auth';
 
 const bcrypt = require('bcrypt');
 const salt = 10;
@@ -61,38 +62,12 @@ export async function handleLogin(prevState, formData: FormData) {
     if (!isAuthenticated) {
       return 'Incorrect Password';
     }
-
-    const clientSecret = new TextEncoder().encode(process.env.SECRET);
-    const adminSecret = new TextEncoder().encode(process.env.ADMIN_SECRET);
-    const oneDay = 24 * 60 * 60 * 1000;
-    const alg = 'HS256';
-    const userInfo = {
-      id: existingUser.id,
-      email: existingUser.email,
-      firstName: existingUser.firstName,
-      admin: existingUser.admin,
-    };
-    const jwt = await new SignJWT(userInfo).setProtectedHeader({ alg }).sign(clientSecret);
-    cookies().set({ name: 'auth', value: jwt, expires: Date.now() + oneDay, httpOnly: true });
-    if (userInfo.admin === true) {
-      userStatus = 'admin';
-      const jwt = await new SignJWT(userInfo).setProtectedHeader({ alg }).sign(adminSecret);
-      cookies().set({
-        name: 'admin',
-        value: jwt,
-        expires: Date.now() + oneDay,
-        httpOnly: true,
-      });
-    }
+    const userInfo = getUserInfo(existingUser);
+    userStatus = await authenticate(userInfo, userStatus);
   } catch (e) {
     console.log(e);
   }
-  if (userStatus === 'admin') {
-    console.log('hello there');
-    redirect('../admin');
-  } else {
-    redirect('/profile');
-  }
+  userStatus === 'admin' ? redirect('../admin') : redirect('/profile');
 }
 
 export async function handleLogout() {

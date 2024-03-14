@@ -19,3 +19,12 @@ export const initializeErrors = () => {
     zod: null,
   };
 };
+
+export const getUserInfo = (existingUser) => {
+  return {
+    id: existingUser.id,
+    email: existingUser.email,
+    firstName: existingUser.firstName,
+    admin: existingUser.admin,
+  };
+};
