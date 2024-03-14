@@ -7,6 +7,7 @@ export interface Person {
   email: string;
   password: string;
   savedBlogs: Array<any>;
+  admin: boolean;
 }
 
 const UserSchema = new Schema<Person, Model<Person>>({
@@ -16,6 +17,7 @@ const UserSchema = new Schema<Person, Model<Person>>({
   email: { type: String, required: true },
   password: { type: String, required: true },
   savedBlogs: [],
+  admin: { type: Boolean, default: false },
 });
 
 export default models.Users || model('Users', UserSchema);
