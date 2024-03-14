@@ -2,7 +2,7 @@
 
 import { revalidatePath } from 'next/cache';
 import BlogPosts from '../lib/blogModel';
-import { notFound } from 'next/navigation';
+import { RedirectType, notFound, redirect } from 'next/navigation';
 import connectDB from 'config/db';
 import { v4 as uuidv4 } from 'uuid';
 import { blogSchema } from '../lib/validators';
@@ -38,10 +38,11 @@ export async function handleCreateBlog(prevState: any, formData: FormData) {
       await BlogPosts.create(data);
       revalidatePath('/blogs');
       revalidatePath('/admin/blogs');
-      return 'success!';
+      // return 'success!';
     }
   } catch (e) {
     console.log(e);
-    return e;
+    return 'error';
   }
+  redirect('../admin');
 }
