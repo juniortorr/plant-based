@@ -2,17 +2,17 @@ import { Schema, models, model, Model } from 'mongoose';
 
 interface Blog {
   id: string;
-  date: Date;
+  date: string;
   title: string;
-  body: string;
+  content: string;
   private: boolean;
 }
 
 const BlogSchema = new Schema<Blog, Model<Blog>>({
   id: String,
-  date: Date,
+  date: String,
   title: String,
-  body: String,
+  content: String,
   private: Boolean,
 });
 

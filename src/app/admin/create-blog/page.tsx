@@ -3,21 +3,23 @@
 import { handleCreateBlog } from 'src/app/(actions)/admin-actions';
 import { useFormState } from 'react-dom';
 import { useState } from 'react';
+import { clear } from 'console';
 
 export default function CreateBlog() {
   const [formState, formAction] = useFormState(handleCreateBlog, null);
   const [inputStates, setInputStates] = useState({ title: '', date: '', content: '' });
 
   const clearInputs = (e) => {
-    e.preventDefault();
-    setInputStates(() => {
-      return { title: '', date: '', content: '' };
-    });
+    setTimeout(() => {
+      setInputStates(() => {
+        return { title: '', date: '', content: '' };
+      });
+    }, 500);
   };
 
   return (
     <>
-      <form action={formAction} onSubmit={clearInputs}>
+      <form action={formAction}>
         {formState}
         <label htmlFor="title">Title:</label>
         <input
@@ -58,7 +60,7 @@ export default function CreateBlog() {
           }}
           value={inputStates.content}
         ></textarea>
-        <button>Submit</button>
+        <button onClick={clearInputs}>Submit</button>
       </form>
 
       <section>
