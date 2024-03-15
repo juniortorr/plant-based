@@ -2,6 +2,8 @@ import { cookies } from 'next/headers';
 import { jwtVerify } from 'jose';
 import { redirect } from 'next/navigation';
 import { handleLogout } from 'src/app/(actions)/actions';
+import ProfileBlogs from '../components/Profile-Blogs';
+import ProfileHeader from '../components/Profile-Header';
 
 export default async function Profile() {
   const secret = new TextEncoder().encode(process.env.SECRET);
@@ -18,13 +20,9 @@ export default async function Profile() {
   const userInfo = await getUserInfo();
 
   return (
-    <div className=" bg-slate-700">
-      <header className=" h-1/3 bg-trees-background bg-contain bg-center bg-no-repeat">
-        <section>
-          <h1>Welcome Back, {userInfo.firstName}!</h1>
-        </section>
-      </header>
-
+    <div>
+      <ProfileHeader userInfo={userInfo} />
+      <ProfileBlogs email={userInfo.email} />
       <form action={handleLogout}>
         <button>Logout</button>
       </form>
