@@ -16,7 +16,7 @@ const UserSchema = new Schema<Person, Model<Person>>({
   lastName: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
-  savedBlogs: [],
+  savedBlogs: [{ type: Schema.Types.ObjectId, ref: 'BlogPosts' }],
   admin: { type: Boolean, default: false },
 });
 
