@@ -7,7 +7,19 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'auth-pages': "url('/login-background.jpg')",
+        'trees-background': "url('/trees-background.jpg')",
+      },
+      colors: {
+        accent: '#C4804A',
+        green: '#3E4D32',
+      },
+      height: {
+        '1/3': '250px',
+      },
+    },
   },
   plugins: [],
 };
