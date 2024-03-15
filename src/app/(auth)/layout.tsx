@@ -5,8 +5,8 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
+    <section className="flex h-screen items-center bg-auth-pages bg-cover bg-center">
+      {children}
+    </section>
   );
 }
