@@ -16,7 +16,7 @@ export default async function Blogs() {
             <p>{blog.title}</p>
             <p>{blog.body}</p>
             <button>
-              <Link href={{ pathname: `/blogs/${blog.id}` }}>Read</Link>
+              <Link href={{ pathname: `/blogs/${blog.id}` }}>Read Blog</Link>
             </button>
           </div>
         );
