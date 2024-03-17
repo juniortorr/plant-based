@@ -1,3 +1,3 @@
 export default function ProfileLayout({ children }) {
-  return <>{children}</>;
+  return <section>{children}</section>;
 }

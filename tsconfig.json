@@ -3,7 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "@/auth": ["auth"],
-      "@/models": ["src/app/lib/models"]
+      "@/models": ["src/app/lib/models"],
+      "@/blogModel": ["src/app/lib/blogModel"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
