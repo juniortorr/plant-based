@@ -31,3 +31,15 @@ export async function handleCreateBlog(formState) {
   }
   redirect('/admin');
 }
+
+export async function handleUpdateBlog(blog, formState) {
+  let success = false;
+  try {
+    await connectDB();
+    await BlogPosts.findOneAndReplace({ id: blog.id }, { ...formState });
+    success = true;
+  } catch (e) {
+    console.log(e);
+  }
+  redirect('/admin');
+}
