@@ -1,18 +1,24 @@
 import { Schema, models, model, Model } from 'mongoose';
+import { string } from 'zod';
+
+interface Section {
+  subheading: string;
+  paragraphs: Array<String>;
+}
 
 interface Blog {
   id: string;
-  date: string;
   title: string;
-  content: string;
+  date: string;
+  sections: Array<{ subheading: string; paragraphs: Array<string> }>;
   private: boolean;
 }
 
 const BlogSchema = new Schema<Blog, Model<Blog>>({
   id: String,
-  date: String,
   title: String,
-  content: String,
+  date: String,
+  sections: Array,
   private: Boolean,
 });
 

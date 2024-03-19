@@ -1,18 +1,21 @@
 import Image from 'next/image';
 import { handleDeleteBlog } from '../(actions)/admin-actions';
+import { revalidatePath } from 'next/cache';
 
 interface DeleteBtnProps {
   id: string;
 }
 
 const DeleteBtn = async ({ id }: DeleteBtnProps) => {
+  const deleteBlog = async () => {
+    'use server';
+    await handleDeleteBlog(id);
+    revalidatePath('/admin');
+  };
   return (
     <form
       className="absolute -right-4 -top-4 hidden transition duration-300 ease-in-out group-hover:block"
-      action={async () => {
-        'use server';
-        handleDeleteBlog(id);
-      }}
+      action={deleteBlog}
     >
       <button>
         <Image

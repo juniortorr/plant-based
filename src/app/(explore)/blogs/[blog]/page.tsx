@@ -1,12 +1,12 @@
 import connectDB from 'config/db';
 import BlogPost from '../../../lib/blogModel';
-import blog from './blog-mock';
 import SharedHeader from 'src/app/components/Header-Shared';
 import BlogContent from 'src/app/components/Blog-Content';
 
 export default async function Blog({ params }) {
-  // await connectDB();
-  // const blog = await BlogPost.findOne({ id: params.blog });
+  await connectDB();
+  const blog = await BlogPost.findOne({ id: params.blog });
+  console.log(blog);
   return (
     <div>
       <SharedHeader title={blog.title} />

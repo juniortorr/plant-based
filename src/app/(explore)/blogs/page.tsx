@@ -5,6 +5,7 @@ import Link from 'next/link';
 export default async function Blogs() {
   await connectDB();
   const posts = await BlogPosts.find();
+  console.log(posts);
   return (
     <>
       {posts.map((blog) => {
