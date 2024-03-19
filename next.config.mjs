@@ -1,8 +1,8 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  images: {
-    domains: ['i.annihil.us'],
-  },
-};
+// /** @type {import('next').NextConfig} */
+// const nextConfig = {
+//   images: {
+//     domains: ['i.annihil.us'],
+//   },
+// };
 
-export default nextConfig;
+// export default nextConfig;
