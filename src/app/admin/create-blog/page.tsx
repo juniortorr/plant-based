@@ -6,24 +6,25 @@ import { useState } from 'react';
 import AddSectionBtn from 'src/app/components/Add-Section-Btn';
 import SectionForm from 'src/app/components/Blog-Section-Form';
 import LivePreview from 'src/app/components/Live-Preview';
+import { handleUpdateBlog } from 'src/app/(actions)/admin-actions';
 
-const formTemplate = {
-  title: '',
-  date: '',
-  sections: [],
-};
+export default function CreateBlog({ blog }) {
+  const formTemplate = {
+    title: '',
+    date: '',
+    sections: [],
+  };
 
-export default function CreateBlog() {
-  // const [formState, formAction] = useFormState(handleCreateBlog, null);
-  const [displayState, setSectionDisplayState] = useState('');
-  const [inputStates, setInputStates] = useState(formTemplate);
+  const [inputStates, setInputStates] = useState(blog || formTemplate);
 
   const clearInputs = (e) => {
-    setTimeout(() => {
-      setInputStates(() => {
-        return { title: '', date: '', sections: [] };
-      });
-    }, 500);
+    !blog
+      ? setTimeout(() => {
+          setInputStates(() => {
+            return { title: '', date: '', sections: [] };
+          });
+        }, 500)
+      : console.log('all is normal');
   };
 
   const openSectionState = () => {
@@ -35,10 +36,18 @@ export default function CreateBlog() {
     });
   };
 
+  const handleFormSubmission = async () => {
+    if (blog) {
+      await handleUpdateBlog(blog, inputStates);
+    }
+  };
+
+  console.log(inputStates);
+
   return (
     <>
       <form
-        action={async () => handleCreateBlog(inputStates)}
+        action={handleFormSubmission}
         className="mx-auto mt-4 flex w-11/12 max-w-sm flex-col items-center gap-5 bg-accent/40 py-5"
       >
         {/* {formState} */}
@@ -95,9 +104,16 @@ export default function CreateBlog() {
           })}
 
         <AddSectionBtn openSectionState={openSectionState} />
-        {/* onClick={clearInputs} */}
 
-        <button className="h-11 w-5/6 bg-green text-white">Submit</button>
+        {blog ? (
+          <button onClick={clearInputs} className="h-11 w-5/6 bg-green text-white">
+            Update
+          </button>
+        ) : (
+          <button onClick={clearInputs} className="h-11 w-5/6 bg-green text-white">
+            Submit
+          </button>
+        )}
       </form>
 
       <LivePreview inputStates={inputStates} />

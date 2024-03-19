@@ -1,15 +1,14 @@
 'use client';
 import { useRef, useState, useEffect } from 'react';
 import BlogParagraph from './Blog-Paragraph';
+import { revalidatePath } from 'next/cache';
 
 const SectionForm = ({ inputStates, setInputStates, sectionIndex, section }) => {
   const [sectionState, setSectionState] = useState({
     subheading: section.subheading,
     paragraphs: [''],
   });
-
   const [displayState, setDisplayState] = useState(false);
-  const paragraphs = useRef(['']);
 
   const handleSubheadingChange = (e) => {
     const arr = inputStates.sections;
@@ -21,7 +20,6 @@ const SectionForm = ({ inputStates, setInputStates, sectionIndex, section }) => 
 
   const deleteSection = () => {
     const sectionCopy = [...inputStates.sections];
-
     sectionCopy.splice(sectionIndex, 1);
     console.log(sectionCopy);
     setInputStates(() => {
@@ -60,12 +58,12 @@ const SectionForm = ({ inputStates, setInputStates, sectionIndex, section }) => 
         Paragraph(s):
       </label>
 
-      {sectionState.paragraphs.map((p: string, index: number) => {
+      {inputStates.sections[sectionIndex].paragraphs.map((p: string, index: number) => {
         return (
           <BlogParagraph
             status={displayState}
             key={index}
-            paragraphs={paragraphs}
+            paragraphContent={p}
             index={index}
             sectionIndex={sectionIndex}
             setSectionState={setSectionState}

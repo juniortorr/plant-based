@@ -1,7 +1,7 @@
 'use client';
 
 const BlogParagraph = ({
-  paragraphs,
+  paragraphContent,
   index,
   status,
   setSectionState,
@@ -20,6 +20,7 @@ const BlogParagraph = ({
   return (
     <textarea
       disabled={status}
+      value={paragraphContent}
       id="paragraph"
       cols={30}
       rows={10}
