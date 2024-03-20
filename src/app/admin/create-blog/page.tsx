@@ -31,7 +31,7 @@ export default function CreateBlog({ blog }) {
     setInputStates(() => {
       return {
         ...inputStates,
-        sections: [...inputStates.sections, { subheading: '', paragraphs: [] }],
+        sections: [...inputStates.sections, { subheading: '', paragraphs: [''] }],
       };
     });
   };
@@ -39,10 +39,10 @@ export default function CreateBlog({ blog }) {
   const handleFormSubmission = async () => {
     if (blog) {
       await handleUpdateBlog(blog, inputStates);
+    } else {
+      await handleCreateBlog(inputStates);
     }
   };
-
-  console.log(inputStates);
 
   return (
     <>
