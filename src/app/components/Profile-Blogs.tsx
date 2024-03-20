@@ -36,7 +36,7 @@ const ProfileBlogs = async ({ email, admin }: ProfileBlogsProps) => {
       <h1 className="mt-9 text-center align-top text-2xl font-bold">Saved Blogs</h1>
       <div className="flex max-w-3xl flex-wrap justify-center gap-6">
         {blogs.map((blog: Blog) => {
-          return <BlogCard key={blog.id} id={blog.id} title={blog.title} />;
+          return <BlogCard key={blog.id} id={blog.id} title={blog.title} blog={blog} />;
         })}
       </div>
     </section>
