@@ -79,8 +79,13 @@ const SectionForm = ({ inputStates, setInputStates, sectionIndex, section }) => 
             type="button"
             className="mx-auto mt-2 w-5/6 rounded-md border-2 border-gray-900 py-3"
             onClick={() => {
-              setSectionState(() => {
-                return { ...sectionState, paragraphs: [...sectionState.paragraphs, ''] };
+              const sectionsCopy = inputStates.sections;
+              sectionsCopy[sectionIndex].paragraphs = [
+                ...sectionsCopy[sectionIndex].paragraphs,
+                '',
+              ];
+              setInputStates(() => {
+                return { ...inputStates, sections: sectionsCopy };
               });
               console.log(sectionState);
             }}
