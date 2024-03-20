@@ -6,11 +6,9 @@ import connectDB from '../../../config/db';
 import Users from '../lib/models';
 import { RedirectType, redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
-import { SignJWT } from 'jose';
-import seedDb from '../lib/seedBlogs';
 import { userSchema } from '../lib/validators';
 import { getCredentials, initializeErrors, getUserInfo } from '../lib/credentials-helpers';
-import { authenticate } from '../lib/auth';
+import { authenticate, decryptJWT } from '../lib/auth';
 
 const bcrypt = require('bcrypt');
 const salt = 10;
@@ -76,7 +74,7 @@ export async function handleLogout() {
 
   if (clientCookie) {
     cookies().delete('auth');
-    console.log('admin logged out successfully');
+    console.log('client logged out successfully');
   }
   if (adminCookie) {
     cookies().delete('admin');
@@ -84,3 +82,38 @@ export async function handleLogout() {
   }
   redirect('/login');
 }
+
+export async function handleDeleteClient(blog) {
+  try {
+    await connectDB();
+    const payload = await decryptJWT();
+    const user = await Users.findOne({ id: payload.id }).populate('savedBlogs');
+    user.savedBlogs = user.savedBlogs.filter((b) => b.id !== blog.id);
+    await user.save();
+    console.log('success');
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+const saveBlog = async (blog) => {
+  'use server';
+  try {
+    await connectDB();
+    const payload = await decryptJWT();
+    const user = await Users.findOne({ id: payload.id }).populate('savedBlogs');
+    await user.savedBlogs.map((post, index) => {
+      if (post.id === blog.id) {
+        throw new Error('matching blog!');
+      }
+    });
+    user.savedBlogs = [...user.savedBlogs, blog._id];
+    await user.save();
+    console.log('success!');
+  } catch (e) {
+    console.log(e);
+    return;
+  }
+};
+
+export { saveBlog };
