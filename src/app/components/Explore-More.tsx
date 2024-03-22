@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const ExploreMore = async () => {
   return (
-    <article className="flex w-4/5 max-w-sm flex-col items-center bg-tan p-6">
+    <article className="flex max-w-sm flex-col items-center bg-tan p-10">
       <h3 className="text-2xl font-bold italic">
         Explore More<br></br> Topics Here!
       </h3>
