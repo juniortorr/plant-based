@@ -9,29 +9,31 @@ const Nav = async ({ color }: NavProps) => {
   const admin = cookies().get('admin');
   const auth = cookies().get('auth');
 
+  const linkClasses = `hover:scale-125 hover:underline transition-all duration-300 hover:-translate-y-1`;
+
   return (
     <nav className={`${!color ? 'text-white' : color} absolute right-6 top-4 flex list-none gap-5`}>
-      <Link href={'/'}>
+      <Link className={linkClasses} href={'/'}>
         <li>Home</li>
       </Link>
-      <Link href={'/about'}>
+      <Link className={linkClasses} href={'/about'}>
         <li>About</li>
       </Link>
-      <Link href={'/blogs'}>
+      <Link className={linkClasses} href={'/blogs'}>
         <li>Blogs</li>
       </Link>
       {!auth ? (
-        <Link href={'/login'}>
+        <Link className={linkClasses} href={'/login'}>
           <li>Login</li>
         </Link>
       ) : (
-        <Link href={'/profile'}>
+        <Link className={linkClasses} href={'/profile'}>
           <li>Profile</li>
         </Link>
       )}
 
       {admin && (
-        <Link href={'/admin'}>
+        <Link className={linkClasses} href={'/admin'}>
           <li>Admin</li>
         </Link>
       )}
