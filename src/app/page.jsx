@@ -5,7 +5,7 @@ import Testimonials from './components/Testimonials';
 import ReadMore from './components/Read-More';
 import HomeAbout from './components/Home-About';
 import GettingStarted from './components/GettingStarted';
-import Link from 'next/link';
+import Footer from './components/Footer';
 
 export default async function Home() {
   return (
@@ -19,6 +19,7 @@ export default async function Home() {
         <HomeAbout />
         <GettingStarted />
       </main>
+      <Footer />
     </>
   );
 }
