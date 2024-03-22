@@ -12,7 +12,7 @@ const Nav = async ({ color }: NavProps) => {
   const linkClasses = `hover:scale-125 hover:underline transition-all duration-300 hover:-translate-y-1`;
 
   return (
-    <nav className={`${!color ? 'text-white' : color} absolute right-6 top-4 flex list-none gap-5`}>
+    <nav className={`${!color ? 'text-white' : color} mx-auto mt-2 flex list-none gap-5`}>
       <Link className={linkClasses} href={'/'}>
         <li>Home</li>
       </Link>
