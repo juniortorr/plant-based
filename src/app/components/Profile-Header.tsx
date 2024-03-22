@@ -5,7 +5,7 @@ interface User {
   admin: boolean;
 }
 
-export default async function ProfileHeader({ userInfo }) {
+const ProfileHeader = async ({ userInfo }) => {
   return (
     <header className=" h-1/3 bg-trees-background bg-cover bg-center bg-no-repeat px-4 py-5">
       <section className="flex items-center gap-3">
@@ -16,4 +16,6 @@ export default async function ProfileHeader({ userInfo }) {
       </section>
     </header>
   );
-}
+};
+
+export default ProfileHeader;
