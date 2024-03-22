@@ -1,10 +1,11 @@
 import BlogPosts from '@/blogModel';
 import connectDB from 'config/db';
 import { Suspense } from 'react';
+import ReadMoreSlider from './Home-Read-More-Slider';
 const ReadMore = async () => {
   await connectDB();
-  const blogs = await BlogPosts.find().limit(3);
-  let i = 1;
+  const foundBlogs = await BlogPosts.find().limit(3);
+  const blogs = await JSON.parse(JSON.stringify(foundBlogs));
 
   return (
     <section className="flex flex-col items-center gap-4 overflow-x-hidden bg-green py-10">
@@ -12,19 +13,8 @@ const ReadMore = async () => {
         Read More On <br></br> Our Blog
       </h2>
       <Suspense fallback={<h1>LOADING BUD</h1>}>
-        <div className="flex gap-3 p-6">
-          {blogs.map((blog, index) => {
-            return (
-              <article key={index} className="flex size-64 items-center justify-center bg-accent">
-                <p className="text-xl font-bold text-white">{blog.title}</p>
-              </article>
-            );
-          })}
-        </div>
+        <ReadMoreSlider blogs={blogs} />
       </Suspense>
-      <div className="flex h-2 w-1/2 justify-center rounded-2xl bg-white">
-        <div className={` h-full w-1/3 rounded-xl` + (i === 2 ? 'bg-white' : 'bg-black')}></div>
-      </div>
     </section>
   );
 };
