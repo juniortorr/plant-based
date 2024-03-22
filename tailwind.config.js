@@ -20,7 +20,7 @@ module.exports = {
         tan: '#FFFAE7',
       },
       height: {
-        '1/3': '250px',
+        '1/3': '300px',
       },
     },
   },
