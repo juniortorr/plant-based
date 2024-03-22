@@ -11,10 +11,13 @@ module.exports = {
       backgroundImage: {
         'auth-pages': "url('/login-background.jpg')",
         'trees-background': "url('/trees-background.jpg')",
+        'home-bg': "url('/back-road.jpg')",
       },
       colors: {
         accent: '#C4804A',
         green: '#3E4D32',
+        brown: '#231C12',
+        tan: '#FFFAE7',
       },
       height: {
         '1/3': '250px',
