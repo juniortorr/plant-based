@@ -1,5 +1,6 @@
 import BlogPosts from '@/blogModel';
 import connectDB from 'config/db';
+import { Suspense } from 'react';
 const ReadMore = async () => {
   await connectDB();
   const blogs = await BlogPosts.find().limit(3);
@@ -10,15 +11,17 @@ const ReadMore = async () => {
       <h2 className="my-5 text-center text-3xl font-bold text-white">
         Read More On <br></br> Our Blog
       </h2>
-      <div className="flex gap-3 p-6">
-        {blogs.map((blog, index) => {
-          return (
-            <article key={index} className="flex size-64 items-center justify-center bg-accent">
-              <p className="text-xl font-bold text-white">{blog.title}</p>
-            </article>
-          );
-        })}
-      </div>
+      <Suspense fallback={<h1>LOADING BUD</h1>}>
+        <div className="flex gap-3 p-6">
+          {blogs.map((blog, index) => {
+            return (
+              <article key={index} className="flex size-64 items-center justify-center bg-accent">
+                <p className="text-xl font-bold text-white">{blog.title}</p>
+              </article>
+            );
+          })}
+        </div>
+      </Suspense>
       <div className="flex h-2 w-1/2 justify-center rounded-2xl bg-white">
         <div className={` h-full w-1/3 rounded-xl` + (i === 2 ? 'bg-white' : 'bg-black')}></div>
       </div>
