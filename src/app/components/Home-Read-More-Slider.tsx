@@ -15,7 +15,6 @@ const ReadMoreSlider = ({ blogs }) => {
               key={index}
               onMouseEnter={() => {
                 setDisplayState(() => index);
-                console.log(displayState);
               }}
               onMouseLeave={() => {
                 setDisplayState(() => null);
