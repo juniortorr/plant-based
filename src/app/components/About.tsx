@@ -1,6 +1,6 @@
 const AboutSection = async () => {
   return (
-    <section className="mx-auto mt-10 flex w-5/6 max-w-sm flex-col items-center gap-10 py-14">
+    <section className="mx-auto mt-5 flex w-5/6 max-w-sm flex-col items-center gap-10 py-14">
       <div className="mx-auto size-80 bg-red-500"></div>
       <div>
         <h2 className="text-2xl font-bold">Hello There!</h2>
