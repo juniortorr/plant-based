@@ -12,7 +12,10 @@ const Mission = async () => {
         laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
         voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidat
       </p>
-      <Link className="self-end bg-accent px-10 py-4" href={'/blogs'}>
+      <Link
+        className="self-end bg-accent px-10 py-4 hover:bg-white hover:text-accent"
+        href={'/blogs'}
+      >
         Learn More
       </Link>
     </section>
