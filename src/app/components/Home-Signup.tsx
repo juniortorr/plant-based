@@ -15,7 +15,7 @@ const HomeSignup = async () => {
       </div>
 
       <Link
-        className="mt-10 flex h-10 w-2/3 items-center justify-center bg-green text-white hover:bg-white hover:text-green transition-all duration-150 ease-linear"
+        className="mt-10 flex h-10 w-2/3 items-center justify-center bg-green text-white transition-all duration-150 ease-linear hover:bg-white hover:text-green"
         href={'/signup'}
       >
         <button>Sign Up</button>

@@ -11,31 +11,31 @@ const Footer = async () => {
           Email:
         </label>
         <input type="text" id="email" name="email" />
-        <button className="bg-accent px-4 py-1 hover:bg-white hover:text-green transition-all duration-150 ease-linear">
+        <button className="bg-accent px-4 py-1 transition-all duration-150 ease-linear hover:bg-white hover:text-green">
           Sign Up
         </button>
       </div>
       <div className="flex w-24 flex-wrap justify-center gap-1 italic ">
         <Link
-          className="hover:scale-105 hover:underline transition-all duration-150 ease-linear"
+          className="transition-all duration-150 ease-linear hover:scale-105 hover:underline"
           href={'/'}
         >
           Home
         </Link>
         <Link
-          className="hover:scale-105 hover:underline transition-all duration-150 ease-linear"
+          className="transition-all duration-150 ease-linear hover:scale-105 hover:underline "
           href={'/about'}
         >
           About
         </Link>
         <Link
-          className="hover:scale-105 hover:underline transition-all duration-150 ease-linear"
+          className="transition-all duration-150 ease-linear hover:scale-105 hover:underline"
           href={'/blogs'}
         >
           Blogs
         </Link>
         <Link
-          className="hover:scale-105 hover:underline transition-all duration-150 ease-linear"
+          className="transition-all duration-150 ease-linear hover:scale-105 hover:underline"
           href={'/profile'}
         >
           Profile
