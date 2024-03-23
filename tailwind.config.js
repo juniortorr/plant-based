@@ -22,6 +22,14 @@ module.exports = {
       height: {
         '1/3': '300px',
       },
+      animation: {
+        slideout: 'slideout .5s ease-in 2s',
+      },
+      keyframes: {
+        slideout: {
+          '100%': { transform: 'translateX(300px)' },
+        },
+      },
     },
   },
   plugins: [],
