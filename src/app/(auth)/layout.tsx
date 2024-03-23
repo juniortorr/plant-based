@@ -8,7 +8,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <section className="flex h-screen flex-col justify-center bg-auth-pages bg-cover bg-center">
-      <div className="absolute top-0 flex w-full justify-center">
+      <div className="absolute top-0 flex size-full justify-center">
         <NavWrapper color="text-black" />
       </div>
       {children}
