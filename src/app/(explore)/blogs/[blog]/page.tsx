@@ -1,6 +1,6 @@
 import connectDB from 'config/db';
 import BlogPost from '../../../lib/blogModel';
-import SharedHeader from 'src/app/components/Header-Shared';
+import SharedHeader from 'src/app/components/Shared-Header';
 import BlogContent from 'src/app/components/Blog-Content';
 
 export default async function Blog({ params }) {

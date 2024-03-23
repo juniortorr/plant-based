@@ -1,4 +1,4 @@
-import SharedHeader from 'src/app/components/Header-Shared';
+import SharedHeader from 'src/app/components/Shared-Header';
 import Footer from 'src/app/components/Footer';
 import Mission from 'src/app/components/Mission';
 import AboutSection from 'src/app/components/About';

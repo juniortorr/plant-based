@@ -1,7 +1,7 @@
 import connectDB from 'config/db';
 import BlogPosts from '../../lib/blogModel';
 import Link from 'next/link';
-import SharedHeader from 'src/app/components/Header-Shared';
+import SharedHeader from 'src/app/components/Shared-Header';
 import { cookies } from 'next/headers';
 import { saveBlog } from 'src/app/(actions)/actions';
 

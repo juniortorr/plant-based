@@ -1,4 +1,4 @@
-import SharedHeader from 'src/app/components/Header-Shared';
+import SharedHeader from 'src/app/components/Shared-Header';
 import ContactForm from 'src/app/components/Contact-Form';
 
 const Contact = async () => {
