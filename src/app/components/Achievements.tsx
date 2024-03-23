@@ -43,15 +43,17 @@ const Achievements = () => {
               <Image
                 src={item}
                 alt="certificate"
-                width={100}
-                height={100}
+                width={120}
+                height={120}
                 className="inline"
               ></Image>
             </animated.div>
           );
         })}
 
-        <p className="w-32 text-center">2019: Best of the Best Award</p>
+        <p className="mt-2 w-32 overflow-hidden text-center leading-5">
+          2019: Best of the Best Award
+        </p>
       </div>
       <div className="flex gap-2.5">
         {urls.map((url, index) => {
