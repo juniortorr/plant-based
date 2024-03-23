@@ -24,7 +24,7 @@ const Achievements = () => {
           return { url: urls[displayState.index + 1], index: displayState.index + 1 };
         });
       }
-    }, 3000);
+    }, 4000);
 
     return () => {
       clearInterval(interval);
@@ -54,9 +54,21 @@ const Achievements = () => {
         <p className="w-32 text-center">2019: Best of the Best Award</p>
       </div>
       <div className="flex gap-2.5">
-        <button className="size-3 rounded-full bg-slate-300"></button>
-        <button className="size-3 rounded-full bg-slate-300"></button>
-        <button className="size-3 rounded-full bg-slate-300"></button>
+        {urls.map((url, index) => {
+          return (
+            <button
+              key={index}
+              className={`size-3 rounded-full ${
+                displayState.index === index ? 'bg-white' : 'bg-slate-300'
+              } `}
+              onClick={() => {
+                setDisplayState(() => {
+                  return { url: urls[index], index: index };
+                });
+              }}
+            ></button>
+          );
+        })}
       </div>
     </section>
   );
