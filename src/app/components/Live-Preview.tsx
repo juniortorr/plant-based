@@ -1,7 +1,7 @@
 const LivePreview = ({ inputStates }) => {
   return (
-    <section className="mx-auto mb-5 mt-4 flex max-w-sm flex-col border-2">
-      <div className="flex h-1/3 justify-center bg-trees-background bg-cover bg-center">
+    <section className="mx-auto mb-5 mt-4 flex w-5/6 max-w-sm flex-col border-2">
+      <div className="flex h-1/3 w-full justify-center bg-trees-background bg-cover bg-center">
         <h2 className="flex h-1/2 items-center justify-center text-xl font-bold">
           {inputStates.title}
         </h2>

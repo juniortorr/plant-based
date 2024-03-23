@@ -7,6 +7,7 @@ import AddSectionBtn from 'src/app/components/Add-Section-Btn';
 import SectionForm from 'src/app/components/Blog-Section-Form';
 import LivePreview from 'src/app/components/Live-Preview';
 import { handleUpdateBlog } from 'src/app/(actions)/admin-actions';
+import Link from 'next/link';
 
 export default function CreateBlog({ blog }) {
   const formTemplate = {
@@ -45,7 +46,10 @@ export default function CreateBlog({ blog }) {
   };
 
   return (
-    <>
+    <div className="flex flex-col items-center ">
+      <Link href={'/admin'} className="mt-4 border-2 border-red-500 px-6 py-4 text-red-500">
+        Return to Dashboard
+      </Link>
       <form
         action={handleFormSubmission}
         className="mx-auto mt-4 flex w-11/12 max-w-sm flex-col items-center gap-5 bg-accent/40 py-5"
@@ -117,6 +121,6 @@ export default function CreateBlog({ blog }) {
       </form>
 
       <LivePreview inputStates={inputStates} />
-    </>
+    </div>
   );
 }
