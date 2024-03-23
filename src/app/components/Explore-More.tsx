@@ -15,10 +15,10 @@ const ExploreMore = async () => {
         </ul>
       </div>
       <Link
-        className="mt-10 flex h-10 w-2/3 items-center justify-center bg-green text-white"
+        className="mt-10 flex h-10 w-2/3 items-center justify-center bg-green text-white hover:bg-white hover:text-green transition-all duration-150 ease-linear"
         href={'/blogs'}
       >
-        <button>Checkout Blog</button>
+        Checkout Blog
       </Link>
     </article>
   );

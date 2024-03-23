@@ -13,7 +13,7 @@ const Mission = async () => {
         voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidat
       </p>
       <Link
-        className="self-end bg-accent px-10 py-4 hover:bg-white hover:text-accent"
+        className="self-end bg-accent px-10 py-4 hover:bg-white hover:text-accent transition-all duration-150 ease-linear"
         href={'/blogs'}
       >
         Learn More
