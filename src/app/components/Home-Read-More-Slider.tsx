@@ -8,7 +8,7 @@ const ReadMoreSlider = ({ blogs }) => {
 
   return (
     <>
-      <div className="flex gap-3 p-6">
+      <div className="flex flex-col gap-6 bg-white p-6 sm:flex-row sm:gap-4">
         {blogs.map((blog, index) => {
           return (
             <article
@@ -19,7 +19,7 @@ const ReadMoreSlider = ({ blogs }) => {
               onMouseLeave={() => {
                 setDisplayState(() => null);
               }}
-              className={`flex size-64 items-center justify-center bg-accent transition-all duration-100 ease-in-out ${
+              className={`flex h-64 w-80 items-center justify-center bg-accent transition-all duration-100 ease-in-out ${
                 displayState === index
                   ? '-translate-y-4 scale-105'
                   : displayState === null
