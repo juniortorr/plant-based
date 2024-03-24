@@ -35,7 +35,7 @@ export const decryptJWT = async () => {
   try {
     const token = cookies().get('auth');
     const { payload } = await jwtVerify(token.value, clientSecret);
-    return payload;
+    return Promise.resolve(payload);
   } catch (e) {
     console.log('Payload Client Error:', e);
     redirect('/login');
