@@ -10,7 +10,6 @@ export default async function Admin() {
   return (
     <div>
       <ProfileHeader userInfo={userInfo} />
-
       <ProfileBlogs admin={true} />
     </div>
   );
