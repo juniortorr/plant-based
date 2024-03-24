@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const HomeSignup = async () => {
   return (
-    <article className="flex max-w-sm flex-col  items-center bg-brown p-10 text-white">
+    <article className="flex max-w-sm flex-col  items-center justify-between bg-brown p-10 text-white">
       <h2 className="text-center text-2xl font-bold italic">
         Join the <br></br> Community
       </h2>
