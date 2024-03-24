@@ -45,18 +45,25 @@ const BlogCard = ({ title, id, blog, admin }: BlogCardProps) => {
       )}
 
       {display === 'open' && (
-        <div className="absolute left-0 top-0 z-20 flex size-full flex-col justify-around bg-green text-center text-white">
+        <div className="absolute left-0 top-0 z-20 flex size-full flex-col justify-around items-center bg-green text-center text-white p-2">
           <h2>Are you sure you want to delete this blog?</h2>
-          <form action={handleDeleteSavedBlog}>
-            <button className="h-5 w-5/6 bg-accent text-white">Unsave</button>
+          <form className="w-5/6" action={handleDeleteSavedBlog}>
+            <button className="h-10 w-full bg-accent text-white">Unsave</button>
           </form>
 
           {admin === true && (
-            <form action={handleDeleteFromDatabase}>
-              <button className="h-5 w-5/6 bg-accent text-white">Delete From Database</button>
+            <form className="w-5/6" action={handleDeleteFromDatabase}>
+              <button className="h-10 w-full bg-accent text-white">Delete From Database</button>
             </form>
           )}
-          <button className="h-5 w-5/6 bg-accent text-white">Close Popup</button>
+          <button
+            className="h-10 w-5/6 bg-accent text-white"
+            onClick={() => {
+              setDisplay(() => 'closed');
+            }}
+          >
+            Return
+          </button>
         </div>
       )}
     </article>
