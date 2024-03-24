@@ -31,7 +31,7 @@ const Achievements = () => {
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [displayState]);
+  });
 
   return (
     <section className="flex flex-col items-center gap-6 bg-brown py-16 text-white">
@@ -65,8 +65,9 @@ const Achievements = () => {
               } `}
               onClick={() => {
                 setDisplayState(() => {
-                  return { url: urls[index], index: index };
+                  return { url: url, index: index };
                 });
+                console.log(displayState);
               }}
             ></button>
           );
