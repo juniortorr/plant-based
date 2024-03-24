@@ -48,15 +48,15 @@ const BlogCard = ({ title, id, blog, admin }: BlogCardProps) => {
         <div className="absolute left-0 top-0 z-20 flex size-full flex-col justify-around bg-green text-center text-white">
           <h2>Are you sure you want to delete this blog?</h2>
           <form action={handleDeleteSavedBlog}>
-            <button className="bg-accent text-white w-5/6 h-5">Unsave</button>
+            <button className="h-5 w-5/6 bg-accent text-white">Unsave</button>
           </form>
 
           {admin === true && (
             <form action={handleDeleteFromDatabase}>
-              <button className="bg-accent text-white w-5/6 h-5">Delete From Database</button>
+              <button className="h-5 w-5/6 bg-accent text-white">Delete From Database</button>
             </form>
           )}
-          <button className="bg-accent text-white w-5/6 h-5">Close Popup</button>
+          <button className="h-5 w-5/6 bg-accent text-white">Close Popup</button>
         </div>
       )}
     </article>
