@@ -45,7 +45,7 @@ const BlogCard = ({ title, id, blog, admin }: BlogCardProps) => {
       )}
 
       {display === 'open' && (
-        <div className="absolute left-0 top-0 z-20 flex size-full flex-col justify-around items-center bg-green text-center text-white p-2">
+        <div className="absolute left-0 top-0 z-20 flex size-full flex-col items-center justify-around bg-green p-2 text-center text-white">
           <h2>Are you sure you want to delete this blog?</h2>
           <form className="w-5/6" action={handleDeleteSavedBlog}>
             <button className="h-10 w-full bg-accent text-white">Unsave</button>
