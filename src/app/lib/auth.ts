@@ -41,3 +41,8 @@ export const decryptJWT = async () => {
     redirect('/login');
   }
 };
+
+export const verifyUser = async () => {
+  const auth = cookies().get('auth');
+  return Promise.resolve(auth);
+};

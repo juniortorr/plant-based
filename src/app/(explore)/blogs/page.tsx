@@ -5,12 +5,14 @@ import SharedHeader from 'src/app/components/Shared-Header';
 import { cookies } from 'next/headers';
 import { saveBlog } from 'src/app/(actions)/actions';
 import { revalidatePath } from 'next/cache';
+import { verifyUser } from 'src/app/lib/auth';
 
 export default async function Blogs() {
   await connectDB();
-  const auth = cookies().get('auth');
+  const auth = await verifyUser();
   const blogs = await BlogPosts.find();
   const posts = await JSON.parse(JSON.stringify(blogs));
+
   return (
     <>
       <SharedHeader title={'Blogs'} />
