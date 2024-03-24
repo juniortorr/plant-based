@@ -42,7 +42,6 @@ const Testimonials = () => {
       <h2 className="mb-6 mt-8 text-3xl font-extrabold">Kind Words</h2>
       <div className="mx-auto mb-6 w-40 border-t-2  bg-slate-300"></div>
       {transitions((style, item) => {
-        console.log(item);
         return (
           <animated.div style={style}>
             <div className="flex max-w-sm flex-col items-center gap-4">
