@@ -32,7 +32,7 @@ const ReadMoreSlider = ({ blogs }) => {
           );
         })}
       </div>
-      <div className="relative flex h-2 w-1/2 justify-center rounded-2xl bg-white">
+      <div className="relative flex h-2 w-1/2 max-w-lg justify-center rounded-2xl bg-white">
         <div
           className={`absolute  top-0 z-0 h-full w-1/3 rounded-full bg-black transition-all duration-300 ease-in-out ${
             displayState === 0
