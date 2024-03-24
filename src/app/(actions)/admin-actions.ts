@@ -15,6 +15,9 @@ export async function handleDeleteBlogAdmin(id: string) {
     console.log(e);
     notFound();
   }
+  revalidatePath('/admin');
+  revalidatePath('/blogs');
+  revalidatePath('/profile');
 }
 
 export async function handleCreateBlog(formState) {

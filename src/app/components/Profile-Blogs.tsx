@@ -4,6 +4,7 @@ import BlogPosts from '@/blogModel';
 import Link from 'next/link';
 import React from 'react';
 import BlogCard from './Blog-Card';
+import { Suspense } from 'react';
 
 interface Blog {
   title: 'string';
@@ -30,18 +31,21 @@ const ProfileBlogs = async ({ email, admin }: ProfileBlogsProps) => {
 
   return (
     <>
-      <section className="mt-5 flex  flex-col items-center gap-10">
+      <section className="mb-10 mt-5  flex flex-col items-center gap-10">
         <h1 className="mt-9 text-center align-top text-2xl font-bold">
           {!admin ? 'Saved Blogs' : 'All Blogs'}
         </h1>
-        <div className="flex max-w-3xl flex-wrap justify-center gap-6">
-          {blogs.map((post: Blog) => {
-            const blog = JSON.parse(JSON.stringify(post));
-            return (
-              <BlogCard key={blog.id} id={blog.id} title={blog.title} blog={blog} admin={admin} />
-            );
-          })}
-        </div>
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <div className="flex max-w-3xl flex-wrap justify-center gap-6">
+            {blogs.map((post: Blog) => {
+              const blog = JSON.parse(JSON.stringify(post));
+              return (
+                <BlogCard key={blog.id} id={blog.id} title={blog.title} blog={blog} admin={admin} />
+              );
+            })}
+          </div>
+        </Suspense>
+
         {admin && (
           <Link className="bg-green px-5 py-3 text-white" href={'/admin/create-blog'}>
             Create New Blog
