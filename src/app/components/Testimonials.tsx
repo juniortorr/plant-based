@@ -42,13 +42,12 @@ const Testimonials = () => {
       <h2 className="mb-6 mt-8 text-3xl font-extrabold">Kind Words</h2>
       <div className="mx-auto mb-6 w-40 border-t-2  bg-slate-300"></div>
       {transitions((style, item) => {
+        console.log(item);
         return (
           <animated.div style={style}>
             <div className="flex max-w-sm flex-col items-center gap-4">
-              <p className="max-w-sm text-center text-lg italic leading-6">
-                {displayState.data.text}
-              </p>
-              <p className="self-end">-{displayState.data.from}</p>
+              <p className="max-w-sm text-center text-lg italic leading-6">{item.text}</p>
+              <p className="self-end">-{item.from}</p>
             </div>
           </animated.div>
         );
@@ -62,8 +61,9 @@ const Testimonials = () => {
               className="size-3 rounded-full bg-slate-300"
               onClick={() => {
                 setDisplayState(() => {
-                  return { data: words[index], index: index };
+                  return { data: { ...entry }, index: index };
                 });
+                console.log(entry, displayState);
               }}
             ></button>
           );
