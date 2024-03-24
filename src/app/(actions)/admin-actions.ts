@@ -6,7 +6,7 @@ import { notFound, redirect } from 'next/navigation';
 import connectDB from 'config/db';
 import { v4 as uuidv4 } from 'uuid';
 
-export async function handleDeleteBlog(id: string) {
+export async function handleDeleteBlogAdmin(id: string) {
   try {
     await connectDB();
     await BlogPosts.findOneAndDelete({ id: id });

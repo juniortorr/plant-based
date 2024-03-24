@@ -4,6 +4,7 @@ import Link from 'next/link';
 import SharedHeader from 'src/app/components/Shared-Header';
 import { cookies } from 'next/headers';
 import { saveBlog } from 'src/app/(actions)/actions';
+import { revalidatePath } from 'next/cache';
 
 export default async function Blogs() {
   await connectDB();
@@ -31,7 +32,9 @@ export default async function Blogs() {
                   <form
                     action={async () => {
                       'use server';
-                      saveBlog(blog);
+                      await saveBlog(blog);
+                      revalidatePath('/profile');
+                      revalidatePath('/admin');
                     }}
                   >
                     <button className="mx-auto hidden h-10 w-4/5 bg-green text-lg font-semibold text-white transition-all  duration-150 ease-linear hover:bg-white  hover:text-green group-hover:block">

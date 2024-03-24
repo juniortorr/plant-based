@@ -1,32 +1,25 @@
+'use client';
+
 import Image from 'next/image';
-import { handleDeleteBlog } from '../(actions)/admin-actions';
+import { handleDeleteBlogAdmin } from '../(actions)/admin-actions';
 import { revalidatePath } from 'next/cache';
-import { cookies } from 'next/headers';
-import { handleDeleteClient } from '../(actions)/actions';
+import { handleDeleteBlogClient } from '../(actions)/actions';
 
 interface DeleteBtnProps {
   id: string;
-  blog?: any;
+  blog?: Object;
+  admin?: any;
+  display: string;
+  setDisplay: Function;
 }
 
-const DeleteBtn = async ({ id, blog }: DeleteBtnProps) => {
-  const parsedBlog = JSON.parse(JSON.stringify(blog));
-
-  const handleDeleteOptions = async () => {
-    'use server';
-    const admin = cookies().get('admin');
-    if (admin) {
-      await handleDeleteBlog(id);
-    } else {
-      await handleDeleteClient(parsedBlog);
-    }
-    revalidatePath('/admin');
-  };
-
+const DeleteBtn = ({ id, blog, admin, display, setDisplay }: DeleteBtnProps) => {
   return (
     <form
       className="absolute -right-4 -top-4 hidden transition duration-300 ease-in-out group-hover:block"
-      action={handleDeleteOptions}
+      action={() => {
+        setDisplay(() => 'open');
+      }}
     >
       <button>
         <Image

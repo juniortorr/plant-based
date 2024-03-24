@@ -9,6 +9,7 @@ import { cookies } from 'next/headers';
 import { userSchema } from '../lib/validators';
 import { getCredentials, initializeErrors, getUserInfo } from '../lib/credentials-helpers';
 import { authenticate, decryptJWT } from '../lib/auth';
+import { revalidatePath } from 'next/cache';
 
 const bcrypt = require('bcrypt');
 const salt = 10;
@@ -83,7 +84,7 @@ export async function handleLogout() {
   redirect('/login');
 }
 
-export async function handleDeleteClient(blog) {
+export async function handleDeleteBlogClient(blog) {
   try {
     await connectDB();
     const payload = await decryptJWT();
@@ -94,10 +95,10 @@ export async function handleDeleteClient(blog) {
   } catch (e) {
     console.log(e);
   }
+  revalidatePath('/profile');
 }
 
 const saveBlog = async (blog) => {
-  'use server';
   try {
     await connectDB();
     const payload = await decryptJWT();
