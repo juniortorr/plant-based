@@ -8,7 +8,7 @@ const ReadMoreSlider = ({ blogs }) => {
 
   return (
     <>
-      <div className="flex flex-col gap-6 p-6 sm:flex-row sm:gap-4">
+      <div className="flex flex-wrap justify-center gap-4 p-6 sm:gap-6">
         {blogs.map((blog, index) => {
           return (
             <article
