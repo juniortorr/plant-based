@@ -1,6 +1,6 @@
 import connectDB from 'config/db';
 import BlogPosts from '../../lib/blogModel';
-import { handleDeleteBlog } from 'src/app/(actions)/admin-actions';
+import { handleDeleteBlogAdmin } from 'src/app/(actions)/admin-actions';
 import Link from 'next/link';
 
 export default async function Blogs() {
@@ -16,7 +16,7 @@ export default async function Blogs() {
             <form
               action={async () => {
                 'use server';
-                await handleDeleteBlog(blog.id);
+                await handleDeleteBlogAdmin(blog.id);
               }}
             >
               <button>Delete</button>
